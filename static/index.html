@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link href="index.css" rel="stylesheet">
+		<title>Privet Members Club</title>
+	</head>
+
+	<body>
+		<h1 align="center">Welcome to the Club!</h1>
+
+	    <div style="width: 100%;">
+		    <div class="member-form" style="float: left;">
+		    	<h3>New member</h3>
+
+			    <form action="/new_member" method="post">
+			    	<div>
+				    	<label>Name:</label>
+				    	<input type="text" name="name">
+				    </div>
+
+			    	<div>
+				    	<label>Email:</label>
+				    	<input type="email" name="email">
+				    </div>
+
+				    <div>
+				    	<input class="button" type="submit" value="Add">
+				    	<input class="button" type="reset" value="Clear">
+				    </div>
+
+			    </form>
+		    </div>
+
+            <div class="member-form" style="float: right;">
+		    	<h3>Kick out member</h3>
+
+			    <form action="/remove_member" method="post">
+			    	<div>
+				    	<label>Email:</label>
+				    	<input type="email" name="email">
+				    </div>
+
+				    <div>
+				    	<input class="button" type="submit" value="Kick">
+				    	<input class="button" type="reset" value="Clear">
+				    </div>
+
+			    </form>
+		    </div>
+
+        </div>
+
+
+		<h2 align="center">Members</h2>
+
+		<table align="center" border="solid">
+			<tr>    <th>Name</th>   <th>Email</th>   <th>Registration date</th>   </tr>
+			{{ range . }}
+				<tr>    <td>{{ .Name }}</td>   <td>{{ .Email }}</td>   <td>{{ .Date }}</td>   </tr>
+			{{ else }}
+            <tr>    <td><h3>Empty members</h3></td>    </tr>
+			{{ end }}
+		</table>
+	</body>
+</html>
